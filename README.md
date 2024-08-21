@@ -1,70 +1,71 @@
 # DeusAdsTool
 
-DeusAdsTool is a Unity package designed to integrate an ad service into your Unity projects. This package allows you to display advertisements on billboards and other surfaces in your game. The MVP version provides functionality to fetch and display ad images from a URL.
-
-## Features
-
-- **Billboard Ad Display:** Attach the `BillboardAd` script to a game object to display advertisements.
-- **Ad Service Integration:** Use the `AdService` script to handle ad image URLs and API key validation.
-- **Customizable Ads:** Set the ad image URL directly or use a placeholder image.
+DeusAdsTool is a Unity package that allows game developers to integrate ad services into their games. This package provides functionality for displaying ads on billboards within your Unity project.
 
 ## Installation
 
-To install the DeusAdsTool package, follow these steps:
+To add the DeusAdsTool package to your Unity project, follow these steps:
 
-1. **Add the Package:**
-   - Open your Unity project.
-   - Navigate to `Window` > `Package Manager`.
-   - Click the “+” button and select “Add package from Git URL”.
-   - Enter the URL of the DeusAdsTool repository and click “Add”.
+1. Open Unity and go to `Window` > `Package Manager`.
+2. Click on the “+” button and select “Add package from Git URL...”.
+3. Enter the following URL: `https://github.com/DeusAds/DeusAdsTool.git`.
+4. Click "Add" to install the package.
 
-   Alternatively, you can add the package to your `manifest.json` file:
+## Usage
 
-   ```json
-   "com.DeusAds.deusadstool": "https://github.com/DeusAds/DeusAdsTool.git"
+### Adding Ads to a Billboard
+
+1. **Create a Billboard Object:**
+   - In your Unity scene, create a 3D object that will act as a billboard. For example, use a plane:
+     - Right-click in the Hierarchy window and choose `3D Object` > `Plane`.
+     - Name the object `Billboard`.
+
+2. **Attach the BillboardAd Script:**
+   - Select the `Billboard` object in the Hierarchy.
+   - In the Inspector window, click on `Add Component`.
+   - Search for `BillboardAd` and select it.
+
+3. **Configure the Ad:**
+   - In the BillboardAd component, set the `imageUrl` property in the Inspector. You can leave it blank to use a placeholder image or enter a URL to an ad image.
+
+4. **Run Your Scene:**
+   - Press `Play` in the Unity Editor to see the ad displayed on the billboard.
+
+### Configuring AdService
+
+1. **Add AdService to a GameObject:**
+   - Create an empty GameObject in your scene (e.g., `AdManager`) and attach the `AdService` script to it.
+
+2. **Set API Key:**
+   - In the `AdService` component, set the `apiKey` field to the API key provided to you.
+
+3. **Integrate with BillboardAd:**
+   - Ensure the `BillboardAd` script retrieves the ad image URL from `AdService` and validates the API key before attempting to load the ad image.
+
+## API Documentation
+
+### `AdService`
+
+- **`public string GetAdImageUrl()`**
+  - Returns the URL of the ad image. Requires a valid API key.
+
+- **`public bool IsApiKeyValid()`**
+  - Returns whether the API key has been validated.
+
+### `BillboardAd`
+
+- **`public string imageUrl`**
+  - URL of the image to display on the billboard. If empty, a placeholder image is used.
+
+## Contribution
+
+If you'd like to contribute to DeusAdsTool, please fork the repository and submit a pull request. For significant changes, please open an issue first to discuss the changes with the maintainers.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 
-Usage
-Setup
-Attach AdService Script:
-
-Create an empty GameObject in your scene (e.g., AdManager).
-Attach the AdService script to this GameObject.
-Set the apiKey field in the AdService component to the API key provided to you.
-Attach BillboardAd Script:
-
-Create a 3D object to act as a billboard (e.g., a Plane).
-Attach the BillboardAd script to the billboard object.
-Set the imageUrl field in the BillboardAd component to the URL of the ad image or leave it blank to use a placeholder image.
-Example
-Here’s an example of how to set up a billboard in your scene:
-
-Create a Billboard:
-
-Right-click in the Hierarchy window, select 3D Object > Plane.
-Rename the plane to Billboard.
-Configure the Billboard:
-
-Select the Billboard object in the Hierarchy.
-In the Inspector, click Add Component and add the BillboardAd script.
-Set the imageUrl property to a valid image URL or leave it blank.
-Configure AdService:
-
-Create an empty GameObject in the scene (e.g., AdManager).
-Attach the AdService script to this GameObject.
-Set the apiKey field to your provided API key.
-Run the Scene:
-
-Press Play in the Unity Editor.
-The billboard should display the ad image specified by the URL.
-License
-This package is licensed under the MIT License. See the LICENSE file for details.
-
-Contributing
-Contributions are welcome! Please fork the repository and submit a pull request with your changes.
-
-Contact
-For questions or support, please contact your.email@company.com.
 
 Changelog
 [1.0.0] - YYYY-MM-DD
