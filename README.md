@@ -8,7 +8,7 @@ To add the DeusAdsTool package to your Unity project, follow these steps:
 
 1. Open Unity and go to `Window` > `Package Manager`.
 2. Click on the “+” button and select “Add package from Git URL...”.
-3. Enter the following URL: `https://github.com/DeusAds/DeusAdsSDK`.
+3. Enter the following URL: `https://github.com/DeusAds/DeusAdsTool`.
 4. Click "Add" to install the package.
 
 ## Usage
