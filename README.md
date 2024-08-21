@@ -1,6 +1,6 @@
 # DeusAdsTool
 
-DeusAdsTool is a Unity package that allows game developers to integrate ad services into their games. This package provides functionality for displaying ads on billboards within your Unity project.
+DeusAdsTool is a Unity package that allows game developers to integrate ad services into their games. This package provides functionality for displaying ads on billboards and cars within your Unity project.
 
 ## Installation
 
@@ -8,7 +8,7 @@ To add the DeusAdsTool package to your Unity project, follow these steps:
 
 1. Open Unity and go to `Window` > `Package Manager`.
 2. Click on the “+” button and select “Add package from Git URL...”.
-3. Enter the following URL: `https://github.com/DeusAds/DeusAdsTool`.
+3. Enter the following URL: `https://github.com/DeusAds/DeusAdsTool.git`.
 4. Click "Add" to install the package.
 
 ## Usage
@@ -26,10 +26,30 @@ To add the DeusAdsTool package to your Unity project, follow these steps:
    - Search for `BillboardAd` and select it.
 
 3. **Configure the Ad:**
-   - In the BillboardAd component, set the `imageUrl` property in the Inspector. You can leave it blank to use a placeholder image or enter a URL to an ad image.
+   - In the `BillboardAd` component, set the `imageUrl` property in the Inspector. You can leave it blank to use a placeholder image or enter a URL to an ad image.
 
 4. **Run Your Scene:**
    - Press `Play` in the Unity Editor to see the ad displayed on the billboard.
+
+### Adding Ads to a Car
+
+1. **Prepare the Car Model:**
+   - Import your car model into the Unity project.
+   - Ensure the car model has a suitable material or surface where the ad will be displayed.
+
+2. **Add an Ad Surface to the Car:**
+   - Create a new plane or UI element as a child of the car model, positioned where you want the ad to appear (e.g., the rear window).
+
+3. **Attach the BillboardAd Script to the Ad Surface:**
+   - Select the newly created plane or UI element in the Hierarchy.
+   - In the Inspector window, click on `Add Component`.
+   - Search for `BillboardAd` and select it.
+
+4. **Configure the Ad:**
+   - In the `BillboardAd` component, set the `imageUrl` property in the Inspector. You can leave it blank to use a placeholder image or enter a URL to an ad image.
+
+5. **Run Your Scene:**
+   - Press `Play` in the Unity Editor to see the ad displayed on the car.
 
 ### Configuring AdService
 
@@ -55,17 +75,11 @@ To add the DeusAdsTool package to your Unity project, follow these steps:
 ### `BillboardAd`
 
 - **`public string imageUrl`**
-  - URL of the image to display on the billboard. If empty, a placeholder image is used.
-
-## Contribution
-
-If you'd like to contribute to DeusAdsTool, please fork the repository and submit a pull request. For significant changes, please open an issue first to discuss the changes with the maintainers.
+  - URL of the image to display on the billboard or car. If empty, a placeholder image is used.
 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-
 
 Changelog
 [1.0.0] - YYYY-MM-DD
