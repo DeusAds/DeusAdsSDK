@@ -2,17 +2,18 @@
   "name": "com.deusads.sdk",
   "version": "0.0.1",
   "displayName": "DeusAdsTool",
-  "description": "FIND A NEW WAY TO MONETIZE YOUR GAME",
+  "description": "Find a new way to monetize your game with DeusAds.",
   "unity": "2022.3",
   "unityRelease": "41f1",
   "keywords": [
     "game",
-    "monetize"
+    "monetize",
+    "ads"
   ],
   "author": {
     "name": "DeusAds",
     "email": "o.ten@deusads.com",
     "url": "https://deusads.com"
   },
-  "type": "adv"
+  "type": "tool"
 }
