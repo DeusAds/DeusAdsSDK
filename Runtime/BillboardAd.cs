@@ -2,12 +2,11 @@ using UnityEngine;
 
 public class BillboardAd : MonoBehaviour
 {
+    public string adTag;  // A unique tag to identify which ad to show on this billboard
     private AdService adService;
-    private string imageUrl; // The URL of the image
 
     private void Start()
     {
-        // Find the AdService in the scene
         adService = FindObjectOfType<AdService>();
 
         if (adService == null)
@@ -16,15 +15,13 @@ public class BillboardAd : MonoBehaviour
             return;
         }
 
-        // Check if the API key is valid
         if (!adService.IsApiKeyValid())
         {
             Debug.LogError("API Key is not valid. Cannot load ads.");
             return;
         }
 
-        // Get the ad image URL
-        imageUrl = adService.GetBillboardAdImageUrl();
+        string imageUrl = adService.GetAdImageUrl(adTag);
 
         if (!string.IsNullOrEmpty(imageUrl))
         {
@@ -47,4 +44,3 @@ public class BillboardAd : MonoBehaviour
         }
     }
 }
-

@@ -1,11 +1,14 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 
 public class AdService : MonoBehaviour
 {
     public string apiKey;  // The API key provided to the client
-
     private bool apiKeyValidated = true; // Flag to track API key validation status
+    private ConcurrentDictionary<string, string> adUrls = new ConcurrentDictionary<string, string>();
+    private readonly object adUrlsLock = new object(); // Lock object for thread safety
 
     private void Start()
     {
@@ -16,6 +19,17 @@ public class AdService : MonoBehaviour
         }
 
         StartCoroutine(ValidateApiKey(apiKey));
+
+        // Mocked ad URLs
+        adUrls["billboard1"] = "https://drive.google.com/uc?export=view&id=102Qs4Ii8GGjc4ba-UztmBgC0mUvqtlTZ";
+        adUrls["billboard2"] = "https://drive.google.com/uc?export=view&id=1hK1Rnop6LVPkKgG0Vtj9PGUG2t6Cvyg5";
+        adUrls["billboard3"] = "https://drive.google.com/uc?export=view&id=17ite1RM7b2oM8HfB_pSxvo4p2jtwZIo6";
+
+        // Debug dictionary contents
+        foreach (var kvp in adUrls)
+        {
+            Debug.Log($"Key: {kvp.Key}, URL: {kvp.Value}");
+        }
     }
 
     // Method to validate the API key
@@ -47,17 +61,33 @@ public class AdService : MonoBehaviour
     }
 
     // Method to get the ad image URL for billboards
-    public string GetBillboardAdImageUrl()
+    public string GetAdImageUrl(string adTag)
     {
-        if (!apiKeyValidated)
+        lock (adUrlsLock)
         {
-            Debug.LogError("API Key has not been validated. Cannot retrieve billboard ad image URL.");
-            return null;
+            if (!apiKeyValidated)
+            {
+                Debug.LogError("API Key has not been validated. Cannot retrieve ad image URL.");
+                return null;
+            }
+            else if (adTag == "billboard1")
+            {
+                return "https://drive.google.com/uc?export=view&id=102Qs4Ii8GGjc4ba-UztmBgC0mUvqtlTZ";
+            }
+            else if (adTag == "billboard2")
+            {
+                return "https://drive.google.com/uc?export=view&id=1hK1Rnop6LVPkKgG0Vtj9PGUG2t6Cvyg5";
+            }
+            else if (adTag == "billboard3")
+            {
+                return "https://drive.google.com/uc?export=view&id=17ite1RM7b2oM8HfB_pSxvo4p2jtwZIo6";
+            }
+            else
+            {
+                Debug.LogError("Ad URL not found for the given tag: " + adTag);
+                return null;
+            }
         }
-
-        // Normally, you would call a backend service here
-        // For MVP, returning a mocked URL
-        return "https://fastly.picsum.photos/id/1/5000/3333.jpg?hmac=Asv2DU3rA_5D1xSe22xZK47WEAN0wjWeFOhzd13ujW4";
     }
 
     // Method to get the ad image URL for cars
@@ -71,6 +101,20 @@ public class AdService : MonoBehaviour
 
         // Normally, you would call a backend service here
         // For MVP, returning a mocked URL for a car ad
+        return "https://drive.google.com/uc?export=view&id=1OciTuTcEbI-DvHjqA06MXHYfXPQ6rd_-";
+    }
+
+    // Method to get the ad image URL (calls backend or returns a mock URL for MVP)
+    public string GetAdImageUrl()
+    {
+        if (!apiKeyValidated)
+        {
+            Debug.LogError("API Key has not been validated. Cannot retrieve ad image URL.");
+            return null;
+        }
+
+        // Normally, you would call a backend service here
+        // For MVP, returning a mocked URL
         return "https://drive.google.com/uc?export=view&id=1OciTuTcEbI-DvHjqA06MXHYfXPQ6rd_-";
     }
 
