@@ -1,8 +1,10 @@
 using UnityEngine;
+using System.Collections;
 
 public class BillboardAd : MonoBehaviour
 {
     public string adTag;  // A unique tag to identify which ad to show on this billboard
+    public string defaultLogoUrl;  // URL for the developer's default logo
     private AdService adService;
 
     private void Start()
@@ -12,12 +14,14 @@ public class BillboardAd : MonoBehaviour
         if (adService == null)
         {
             Debug.LogError("AdService not found in the scene.");
+            LoadDefaultLogo();
             return;
         }
 
         if (!adService.IsApiKeyValid())
         {
             Debug.LogError("API Key is not valid. Cannot load ads.");
+            LoadDefaultLogo();
             return;
         }
 
@@ -25,13 +29,11 @@ public class BillboardAd : MonoBehaviour
 
         if (!string.IsNullOrEmpty(imageUrl))
         {
-            StartCoroutine(ImageLoader.LoadImage(imageUrl, SetBillboardImage));
+            StartCoroutine(ImageLoader.LoadImage(imageUrl, SetBillboardImage, LoadDefaultLogo));
         }
         else
         {
-            // Load a placeholder image if no URL is provided
-            Texture2D placeholder = Resources.Load<Texture2D>("PlaceholderAd");
-            SetBillboardImage(placeholder);
+            LoadDefaultLogo();
         }
     }
 
@@ -42,5 +44,25 @@ public class BillboardAd : MonoBehaviour
         {
             renderer.material.mainTexture = texture;
         }
+    }
+
+    private void LoadDefaultLogo()
+    {
+        if (!string.IsNullOrEmpty(defaultLogoUrl))
+        {
+            Debug.Log("Loading default logo from URL.");
+            StartCoroutine(ImageLoader.LoadImage(defaultLogoUrl, SetBillboardImage, LoadPlaceholderImage));
+        }
+        else
+        {
+            LoadPlaceholderImage();
+        }
+    }
+
+    private void LoadPlaceholderImage()
+    {
+        Debug.Log("Loading placeholder image.");
+        Texture2D placeholder = Resources.Load<Texture2D>("PlaceholderAd");
+        SetBillboardImage(placeholder);
     }
 }

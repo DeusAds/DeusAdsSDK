@@ -23,7 +23,7 @@ public class AdService : MonoBehaviour
         // Mocked ad URLs
         adUrls["billboard1"] = "https://drive.google.com/uc?export=view&id=102Qs4Ii8GGjc4ba-UztmBgC0mUvqtlTZ";
         adUrls["billboard2"] = "https://drive.google.com/uc?export=view&id=1hK1Rnop6LVPkKgG0Vtj9PGUG2t6Cvyg5";
-        adUrls["billboard3"] = "https://drive.google.com/uc?export=view&id=17ite1RM7b2oM8HfB_pSxvo4p2jtwZIo6";
+        adUrls["billboard3"] = "https://drive.google.com/uc?export=view&id=1_qpF39rh_1oI-rhph0XqOhCyMmCGj_4V";
 
         // Debug dictionary contents
         foreach (var kvp in adUrls)
@@ -72,7 +72,7 @@ public class AdService : MonoBehaviour
             }
             else if (adTag == "billboard1")
             {
-                return "https://drive.google.com/uc?export=view&id=102Qs4Ii8GGjc4ba-UztmBgC0mUvqtlTZ";
+                return "https://drive.google.com/uc?export=view&id=102Qs4Ii8GGjc4ba-UztmBgC0mUvqtlTZ==";
             }
             else if (adTag == "billboard2")
             {
@@ -80,7 +80,7 @@ public class AdService : MonoBehaviour
             }
             else if (adTag == "billboard3")
             {
-                return "https://drive.google.com/uc?export=view&id=17ite1RM7b2oM8HfB_pSxvo4p2jtwZIo6";
+                return "https://drive.google.com/uc?export=view&id=1_qpF39rh_1oI-rhph0XqOhCyMmCGj_4V";
             }
             else
             {
