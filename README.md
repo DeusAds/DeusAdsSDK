@@ -28,6 +28,9 @@ To add the DeusAdsTool package to your Unity project, follow these steps:
 3. **Configure the Ad:**
    - In the `BillboardAd` component, set the `imageUrl` property in the Inspector. You can leave it blank to use a placeholder image or enter a URL to an ad image.
 
+   - Optionally set the `defaultLogoUrl` to provide a fallback logo when there is no internet connection or the ad URL fails to load.
+Set the `aspectRatio` field (e.g., '4:3' or '1:1') to control the image scaling on the billboard.
+
 4. **Run Your Scene:**
    - Press `Play` in the Unity Editor to see the ad displayed on the billboard.
 
@@ -47,6 +50,8 @@ To add the DeusAdsTool package to your Unity project, follow these steps:
 
 4. **Configure the Ad:**
    - In the `BillboardAd` component, set the `imageUrl` property in the Inspector. You can leave it blank to use a placeholder image or enter a URL to an ad image.
+   - Optionally, assign a `placeholderLogo` directly in the Inspector for situations where no ad can be loaded from the server.
+Set the `aspectRatio` to define how the ad will scale on the car (e.g., '4:3', '1:1').
 
 5. **Run Your Scene:**
    - Press `Play` in the Unity Editor to see the ad displayed on the car.
@@ -76,13 +81,28 @@ To add the DeusAdsTool package to your Unity project, follow these steps:
 
 - **`public string imageUrl`**
   - URL of the image to display on the billboard or car. If empty, a placeholder image is used.
+- **`public string  defaultLogoUrl URL`**
+  - URL for a fallback logo in case the ad fails to load or no image URL is provided.
+- **`public string  aspectRatio`**
+  - Defines the aspect ratio of the ad in the format 'X
+' (e.g., '4:3', '1:1').
 
+### `CarAd`
+
+- **`public string  defaultLogoUrl URL`**
+  - URL for a fallback logo in case the ad fails to load or no image URL is provided.
+- **`public Texture2D placeholderLogo`**
+  - A local placeholder image to display if the ad service fails to provide an image or the connection is lost.
+- **`public string  aspectRatio`**
+  - Defines the aspect ratio of the ad in the format 'X
+' (e.g., '4:3', '1:1').
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 Changelog
 [1.0.0] - YYYY-MM-DD
-Initial release with basic functionality to display ads on billboards.
+- Initial release with basic functionality to display ads on billboards.
+- added defaul logo, placeholder logo and aspect ratio
 
 
