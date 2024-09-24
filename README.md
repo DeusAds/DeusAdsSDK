@@ -96,6 +96,25 @@ Set the `aspectRatio` to define how the ad will scale on the car (e.g., '4:3', '
 - **`public string  aspectRatio`**
   - Defines the aspect ratio of the ad in the format 'X
 ' (e.g., '4:3', '1:1').
+
+### Preloading Ads
+
+The preloader allows you to load ads before they are needed, improving performance and user experience. 
+
+1. **Using the Preloader:**
+   - Set the `usePreloader` property in the `GameController` to `true` to enable the preloader.
+   - The preloader will display a progress bar and blur the scene while loading.
+
+2. **Ad URLs:**
+   - The `GameController` retrieves the ad URLs from the `AdService` using the `GetAdUrls()` method.
+   - Ensure the URLs are correctly set in the `AdService`.
+
+3. **Hiding the Preloader:**
+   - After loading the ads, the preloader canvas will be hidden, and the game will continue as normal.
+
+4. **Implementing the Preloader:**
+   - In the `PreloadAds()` coroutine, the progress bar will update as each image is loaded.
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
