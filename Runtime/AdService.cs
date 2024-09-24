@@ -9,7 +9,16 @@ public class AdService : MonoBehaviour
     private bool apiKeyValidated = true; // Flag to track API key validation status
     private ConcurrentDictionary<string, string> adUrls = new ConcurrentDictionary<string, string>();
     private readonly object adUrlsLock = new object(); // Lock object for thread safety
-
+    public string[] GetAdUrls()
+    {
+        // Return the array of ad URLs
+        return new string[]
+        {
+            "https://drive.google.com/uc?export=view&id=102Qs4Ii8GGjc4ba-UztmBgC0mUvqtlTZ",
+            "https://drive.google.com/uc?export=view&id=1hK1Rnop6LVPkKgG0Vtj9PGUG2t6Cvyg5",
+            "https://drive.google.com/uc?export=view&id=1_qpF39rh_1oI-rhph0XqOhCyMmCGj_4V"
+        };
+    }
     private void Start()
     {
         if (string.IsNullOrEmpty(apiKey))
@@ -19,12 +28,6 @@ public class AdService : MonoBehaviour
         }
 
         StartCoroutine(ValidateApiKey(apiKey));
-
-        // Mocked ad URLs
-        adUrls["billboard1"] = "https://drive.google.com/uc?export=view&id=102Qs4Ii8GGjc4ba-UztmBgC0mUvqtlTZ";
-        adUrls["billboard2"] = "https://drive.google.com/uc?export=view&id=1hK1Rnop6LVPkKgG0Vtj9PGUG2t6Cvyg5";
-        adUrls["billboard3"] = "https://drive.google.com/uc?export=view&id=1_qpF39rh_1oI-rhph0XqOhCyMmCGj_4V";
-
         // Debug dictionary contents
         foreach (var kvp in adUrls)
         {
