@@ -5,9 +5,16 @@ using System.Collections.Generic;
 public static class ImageLoader
 {
     private static readonly Dictionary<string, Texture2D> imageCache = new Dictionary<string, Texture2D>();
-
+    private static readonly float delay = 0;
+    // Adds a delay parameter (in seconds) to delay the image loading
     public static IEnumerator LoadImage(string url, System.Action<Texture2D> onSuccess, System.Action onFailure)
     {
+        // Optional delay before starting the image download
+        if (delay > 0f)
+        {
+            yield return new WaitForSeconds(delay); // Wait for the specified delay time
+        }
+
         if (imageCache.TryGetValue(url, out Texture2D cachedTexture))
         {
             // If the image is in the cache, return it immediately

@@ -14,9 +14,14 @@ public class AdService : MonoBehaviour
         // Return the array of ad URLs
         return new string[]
         {
-            "https://drive.google.com/uc?export=view&id=102Qs4Ii8GGjc4ba-UztmBgC0mUvqtlTZ",
-            "https://drive.google.com/uc?export=view&id=1hK1Rnop6LVPkKgG0Vtj9PGUG2t6Cvyg5",
-            "https://drive.google.com/uc?export=view&id=1_qpF39rh_1oI-rhph0XqOhCyMmCGj_4V"
+            "https://my-deusads-game-assets.s3.eu-north-1.amazonaws.com/vw-golf-naxart.jpg",
+            "https://my-deusads-game-assets.s3.eu-north-1.amazonaws.com/camaro-naxart.jpg",
+            "https://my-deusads-game-assets.s3.eu-north-1.amazonaws.com/old-mercedes-benz-naxart.jpg"    
+            
+            // "https://drive.google.com/uc?export=view&id=102Qs4Ii8GGjc4ba-UztmBgC0mUvqtlTZ",
+            // "https://drive.google.com/uc?export=view&id=1hK1Rnop6LVPkKgG0Vtj9PGUG2t6Cvyg5",
+            // "https://drive.google.com/uc?export=view&id=1_qpF39rh_1oI-rhph0XqOhCyMmCGj_4V",
+            // "https://drive.google.com/uc?export=view&id=1OciTuTcEbI-DvHjqA06MXHYfXPQ6rd_-"
         };
     }
     private void Start()
@@ -75,15 +80,15 @@ public class AdService : MonoBehaviour
             }
             else if (adTag == "billboard1")
             {
-                return "https://drive.google.com/uc?export=view&id=102Qs4Ii8GGjc4ba-UztmBgC0mUvqtlTZ==";
+                return "https://my-deusads-game-assets.s3.eu-north-1.amazonaws.com/billboard1.jpg2";//"https://drive.google.com/uc?export=view&id=102Qs4Ii8GGjc4ba-UztmBgC0mUvqtlTZ";
             }
             else if (adTag == "billboard2")
             {
-                return "https://drive.google.com/uc?export=view&id=1hK1Rnop6LVPkKgG0Vtj9PGUG2t6Cvyg5";
+                return "https://my-deusads-game-assets.s3.eu-north-1.amazonaws.com/billboard2.jpg";//"https://drive.google.com/uc?export=view&id=1hK1Rnop6LVPkKgG0Vtj9PGUG2t6Cvyg5+";
             }
             else if (adTag == "billboard3")
             {
-                return "https://drive.google.com/uc?export=view&id=1_qpF39rh_1oI-rhph0XqOhCyMmCGj_4V";
+                return "https://my-deusads-game-assets.s3.eu-north-1.amazonaws.com/billboard3.jpg";//"https://drive.google.com/uc?export=view&id=1_qpF39rh_1oI-rhph0XqOhCyMmCGj_4V+";
             }
             else
             {
@@ -104,7 +109,7 @@ public class AdService : MonoBehaviour
 
         // Normally, you would call a backend service here
         // For MVP, returning a mocked URL for a car ad
-        return "https://drive.google.com/uc?export=view&id=1OciTuTcEbI-DvHjqA06MXHYfXPQ6rd_-";
+        return "https://my-deusads-game-assets.s3.eu-north-1.amazonaws.com/adCar.jpg";//"https://drive.google.com/uc?export=view&id=1OciTuTcEbI-DvHjqA06MXHYfXPQ6rd_-";
     }
 
     // Method to get the ad image URL (calls backend or returns a mock URL for MVP)
@@ -118,7 +123,7 @@ public class AdService : MonoBehaviour
 
         // Normally, you would call a backend service here
         // For MVP, returning a mocked URL
-        return "https://drive.google.com/uc?export=view&id=1OciTuTcEbI-DvHjqA06MXHYfXPQ6rd_-";
+        return "https://my-deusads-game-assets.s3.eu-north-1.amazonaws.com/adCar.jpg";
     }
 
     // Helper method to check if the API key is valid
